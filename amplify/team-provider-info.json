@@ -10,6 +10,11 @@
       "StackName": "amplify-algoduel-dev-3650f",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:188641592582:stack/amplify-algoduel-dev-3650f/41339ff0-d953-11ef-b7cc-06bed7c728bd",
       "AmplifyAppId": "d3n487s9fis2jz"
+    },
+    "categories": {
+      "function": {
+        "GoPrimeCalculator": {}
+      }
     }
   }
 }
