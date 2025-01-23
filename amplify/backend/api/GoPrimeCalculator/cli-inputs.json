@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/prime-calculation/go/start": {
+      "name": "/prime-calculation/go/start",
+      "lambdaFunction": "GoPrimeCalculator",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

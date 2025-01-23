@@ -1,4 +1,20 @@
 {
+  "api": {
+    "GoPrimeCalculator": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "GoPrimeCalculator"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "function": {
     "GoPrimeCalculator": {
       "build": true,
