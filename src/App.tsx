@@ -1,4 +1,4 @@
-import { API } from 'aws-amplify';
+import { get } from 'aws-amplify/api';
 
 function App() {
   return (
@@ -10,15 +10,14 @@ function App() {
 
 async function callLambda() {
   try {
-    const response = await API.get('myApiName', '/path', {
-      queryStringParameters: {
-        param1: 'value1',
-        param2: 'value2',
-      },
+    const restOperation = get({ 
+      apiName: 'GoPrimeCalculator',
+      path: '/prime-calculation/go/start'
     });
-    console.log('Response:', response);
-  } catch (error) {
-    console.error('Error calling API:', error);
+    const response = await restOperation.response;
+    console.log('GET call succeeded: ', response);
+  } catch (e) {
+    console.log('GET call failed: ', JSON.parse(e.response.body));
   }
 }
 
