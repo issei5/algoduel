@@ -1,36 +1,20 @@
 package main
 
 import (
-	"encoding/json"
+	"context"
 	"fmt"
-	"log"
-	"net/http"
+
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
-type Response struct {
-	Message string `json:"message"`
-	Input   interface{} `json:"input"`
+type MyEvent struct {
+	Name string `json:"name"`
 }
 
-func lambdaHandler(w http.ResponseWriter, r *http.Request) {
-	// Lambda用のレスポンスを準備
-	response := Response{
-		Message: "Hello from Go Lambda!",
-		Input:   r.Body,  // リクエストボディをそのまま返す
-	}
-
-	// レスポンスを書き出す
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-
-	err := json.NewEncoder(w).Encode(response)
-	if err != nil {
-		log.Fatal("Failed to encode response: ", err)
-	}
+func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
+	return fmt.Sprintf("Hello %s!", name.Name), nil
 }
 
 func main() {
-	http.HandleFunc("/", lambdaHandler)
-	fmt.Println("Starting Lambda function")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	lambda.Start(HandleRequest)
 }
