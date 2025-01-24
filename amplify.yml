@@ -11,6 +11,8 @@ backend:
             commands:
                 - '# Execute Amplify CLI with the helper script'
                 - export PATH=$PATH:/usr/local/go/bin
+                - export GOMODCACHE=$PWD/tmp/pkg  # ローカルディレクトリを使用
+                - mkdir -p $GOMODCACHE          # 必要に応じてディレクトリを作成
                 - go version
                 - sudo amplifyPush --simple
 frontend:
