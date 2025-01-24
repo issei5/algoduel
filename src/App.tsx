@@ -1,16 +1,25 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { API } from 'aws-amplify';
 
-const App = () => {
-  const [data, setData] = useState<string>('');
+function App() {
+  return (
+    <div>
+      <button onClick={callLambda}>Call Lambda</button>
+    </div>
+  );
+}
 
-  useEffect(() => {
-    axios.get('https://main.d3n487s9fis2jz.amplifyapp.com/dev/prime-calculation/go/start')
-      .then(response => setData(response.data.message))
-      .catch(error => console.error(error));
-  }, []);
-
-  return <div>hello , {data}</div>;
-};
+async function callLambda() {
+  try {
+    const response = await API.get('myApiName', '/path', {
+      queryStringParameters: {
+        param1: 'value1',
+        param2: 'value2',
+      },
+    });
+    console.log('Response:', response);
+  } catch (error) {
+    console.error('Error calling API:', error);
+  }
+}
 
 export default App;
