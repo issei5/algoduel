@@ -10,14 +10,14 @@ function App() {
 
 async function callLambda() {
   try {
-    const restOperation = get({ 
+    const restOperation = get({
       apiName: 'GoPrimeCalculator',
       path: '/prime-calculation/go/start'
     });
     const response = await restOperation.response;
     console.log('GET call succeeded: ', response);
-  } catch (e) {
-    console.log('GET call failed: ', JSON.parse(e.response.body));
+  } catch (error) {
+    console.log(error);
   }
 }
 
