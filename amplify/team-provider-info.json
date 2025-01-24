@@ -13,6 +13,12 @@
     },
     "categories": {
       "function": {
+        "GoPrimeCalculator": {
+          "deploymentBucketName": "amplify-algoduel-dev-3650f-deployment",
+          "s3Key": "amplify-builds/GoPrimeCalculator-6e627346616435513264-build.zip"
+        }
+      },
+      "api": {
         "GoPrimeCalculator": {}
       }
     }
